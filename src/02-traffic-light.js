@@ -22,5 +22,38 @@
  * @returns {string} The driving action to take
  */
 export function getTrafficAction(color) {
-  // Your code here
+    if( typeof color !== 'string') return 'INVALID SIGNAL';
+  
+    let action = "";
+    switch(color){
+      case 'GREEN':
+      case 'Green':
+      case 'green':
+      action = 'GO';
+      break;
+
+      case 'YELLOW':
+        case 'Yellow':
+        case 'yellow':
+        action = 'SLOW DOWN';
+        break;
+
+        case 'RED':
+          case 'Red':
+          case 'red':
+          action = 'STOP';
+          break;
+
+          case 'FLASHING RED':
+            case 'Flashing Red':
+            case 'flashing red':
+            action = 'STOP AND PROCEED WITH CAUTION';
+            break;
+
+             default:
+              action = 'INVALID SIGNAL';
+              break;
+    };
+
+    return action;
 }

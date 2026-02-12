@@ -30,5 +30,40 @@
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
  */
 export function calculateTip(billAmount, serviceRating) {
-  // Your code here
+  
+  if(typeof billAmount !== 'number' ||  billAmount <= 0) return null;
+  if( !Number.isInteger(serviceRating) || serviceRating <= 0 || serviceRating > 5) return null;
+
+  if(serviceRating === 1){
+    const tipPercentage = 5;
+    const tipAmount = billAmount * 0.05;
+    const roundedVal = Number((tipAmount.toFixed(2)));
+    const totalAmount = billAmount + roundedVal;
+    return { tipPercentage , tipAmount :roundedVal , totalAmount};
+  } else if(serviceRating === 2){
+    const tipPercentage = 10;
+    const tipAmount = billAmount * 0.1;
+    const roundedVal = Number((tipAmount).toFixed(2));
+    const totalAmount = billAmount + roundedVal;
+    return { tipPercentage , tipAmount :roundedVal, totalAmount};
+  } else if(serviceRating === 3){
+    const tipPercentage = 15;
+    const tipAmount = billAmount * 0.15;
+    const roundedVal = Number((tipAmount.toFixed(2)));
+    const totalAmount = billAmount + roundedVal;
+    return { tipPercentage ,  tipAmount: roundedVal, totalAmount};
+  } else if(serviceRating === 4){
+    const tipPercentage = 20;
+    const tipAmount = billAmount * 0.2;
+    const roundedVal = Number((tipAmount.toFixed(2)));
+    const totalAmount = billAmount + roundedVal;
+    return { tipPercentage ,  tipAmount:roundedVal, totalAmount};
+} else {
+  const tipPercentage = 25;
+  const tipAmount = billAmount * 0.25;
+  const roundedVal = Number(tipAmount.toFixed(2));
+  const totalAmount = billAmount + roundedVal;
+  return { tipPercentage,  tipAmount:roundedVal, totalAmount};
+}
+
 }

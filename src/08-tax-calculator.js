@@ -25,6 +25,32 @@
  * @param {number} income - Annual income in dollars
  * @returns {number} Total tax amount owed
  */
+
 export function calculateTax(income) {
-  // Your code here
+  if (typeof income !== "number" || income <= 0) {
+    return 0;
+  }
+
+  let tax = 0;
+
+  // Bracket 4: Over 70,000 → 30%
+  if (income > 70000) {
+    tax += (income - 70000) * 0.30;
+    income = 70000;
+  }
+
+  // Bracket 3: 30,001 – 70,000 → 20%
+  if (income > 30000) {
+    tax += (income - 30000) * 0.20;
+    income = 30000;
+  }
+
+  // Bracket 2: 10,001 – 30,000 → 10%
+  if (income > 10000) {
+    tax += (income - 10000) * 0.10;
+  }
+
+  // Bracket 1: 0 – 10,000 → 0% (no tax)
+
+  return Number(tax.toFixed(2));
 }
